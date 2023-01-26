@@ -3,8 +3,10 @@ DROP TABLE IF EXISTS voraussetzen;
 DROP TABLE IF EXISTS pruefen;
 DROP TABLE IF EXISTS Vorlesungen;
 DROP TABLE IF EXISTS Studenten;
+DROP TABLE IF EXISTS StudentenGF;
 DROP TABLE IF EXISTS Assistenten;
 DROP TABLE IF EXISTS Professoren;
+DROP TABLE IF EXISTS ProfessorenF;
 
 CREATE TABLE Studenten
        (MatrNr         INTEGER PRIMARY KEY,
