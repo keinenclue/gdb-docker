@@ -3,19 +3,35 @@ DROP TABLE IF EXISTS voraussetzen;
 DROP TABLE IF EXISTS pruefen;
 DROP TABLE IF EXISTS Vorlesungen;
 DROP TABLE IF EXISTS Studenten;
+DROP TABLE IF EXISTS StudentenGF;
 DROP TABLE IF EXISTS Assistenten;
 DROP TABLE IF EXISTS Professoren;
+DROP TABLE IF EXISTS ProfessorenF;
 
 CREATE TABLE Studenten
        (MatrNr         INTEGER PRIMARY KEY,
         Name           VARCHAR(30) NOT NULL,
         Semester       INTEGER);
-
+        
+CREATE TABLE StudentenGF
+       (MatrNr         INTEGER PRIMARY KEY,
+        Name           VARCHAR(30) NOT NULL,
+        Semester       INTEGER,
+        Geschlecht     VARCHAR(30) NOT NULL,
+        Fakultaet      Varchar(30) NOT NULL);
+        
 CREATE TABLE Professoren
        (PersNr         INTEGER PRIMARY KEY,
         Name           VARCHAR(30) NOT NULL,
         Rang           CHAR(2) CHECK (Rang in ('C2', 'C3', 'C4')),
         Raum           INTEGER UNIQUE);
+
+CREATE TABLE ProfessorenF
+       (PersNr         INTEGER PRIMARY KEY,
+        Name           VARCHAR(30) NOT NULL,
+        Rang           CHAR(2) CHECK (Rang in ('C2', 'C3', 'C4')),
+        Raum           INTEGER UNIQUE,
+        Fakultaet      Varchar(30) NOT NULL);
 
 CREATE TABLE Assistenten
        (PersNr         INTEGER PRIMARY KEY,
@@ -73,6 +89,30 @@ INSERT INTO Studenten(MatrNr, Name, Semester)
 VALUES (29555, 'Feuerbach', 2); 
  
 
+INSERT INTO StudentenGF(MatrNr, Name, Semester, Geschlecht, Fakultaet) 
+VALUES (24002, 'Xenokrates', 18, 'M', 'Philosophie'); 
+ 
+INSERT INTO StudentenGF(MatrNr, Name, Semester, Geschlecht, Fakultaet) 
+VALUES (25403, 'Jonas', 12, 'W', 'Theologie'); 
+ 
+INSERT INTO StudentenGF(MatrNr, Name, Semester, Geschlecht, Fakultaet) 
+VALUES (26120, 'Fichte', 10, 'W', 'Philosophie'); 
+
+INSERT INTO StudentenGF(MatrNr, Name, Semester, Geschlecht, Fakultaet) 
+VALUES (26830, 'Aristoxenos', 8, 'M', 'Philosophie'); 
+ 
+INSERT INTO StudentenGF(MatrNr, Name, Semester, Geschlecht, Fakultaet) 
+VALUES (27550, 'Schopenhauer', 6, 'M', 'Philosophie'); 
+
+INSERT INTO StudentenGF(MatrNr, Name, Semester, Geschlecht, Fakultaet) 
+VALUES (28106, 'Carnap', 3, 'W', 'Physik'); 
+ 
+INSERT INTO StudentenGF(MatrNr, Name, Semester, Geschlecht, Fakultaet) 
+VALUES (29120, 'Theophrastos', 2, 'M', 'Physik'); 
+ 
+INSERT INTO StudentenGF(MatrNr, Name, Semester, Geschlecht, Fakultaet) 
+VALUES (29555, 'Feuerbach', 2, 'W', 'Theologie'); 
+
 
 INSERT INTO Professoren(PersNr, Name, Rang, Raum) 
 VALUES (2125, 'Sokrates', 'C4', 226); 
@@ -94,7 +134,29 @@ VALUES (2136, 'Curie', 'C4', 036);
  
 INSERT INTO Professoren(PersNr, Name, Rang, Raum) 
 VALUES (2137, 'Kant', 'C4', 007); 
+
+
+
+INSERT INTO ProfessorenF(PersNr, Name, Rang, Raum, Fakultaet) 
+VALUES (2125, 'Sokrates', 'C4', 226, 'Philosophie'); 
+
+INSERT INTO ProfessorenF(PersNr, Name, Rang, Raum, Fakultaet) 
+VALUES (2126, 'Russel', 'C4', 232, 'Philosophie');  
  
+INSERT INTO ProfessorenF(PersNr, Name, Rang, Raum, Fakultaet) 
+VALUES (2127, 'Kopernikus', 'C3', 310, 'Physik'); 
+ 
+INSERT INTO ProfessorenF(PersNr, Name, Rang, Raum, Fakultaet) 
+VALUES (2133, 'Popper', 'C3', 052, 'Philosophie'); 
+ 
+INSERT INTO ProfessorenF(PersNr, Name, Rang, Raum, Fakultaet) 
+VALUES (2134, 'Augustinus', 'C3', 309, 'Theologie'); 
+ 
+INSERT INTO ProfessorenF(PersNr, Name, Rang, Raum, Fakultaet) 
+VALUES (2136, 'Curie', 'C4', 036, 'Physik'); 
+ 
+INSERT INTO ProfessorenF(PersNr, Name, Rang, Raum, Fakultaet) 
+VALUES (2137, 'Kant', 'C4', 007, 'Philosophie'); 
  
  
 INSERT INTO Assistenten(PersNr, Name, Fachgebiet, Boss) 
